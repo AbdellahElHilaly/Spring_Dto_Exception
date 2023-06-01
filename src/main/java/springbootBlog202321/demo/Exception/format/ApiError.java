@@ -1,4 +1,4 @@
-package springbootBlog202321.demo.Exception;
+package springbootBlog202321.demo.Exception.format;
 
 
 import lombok.Getter;

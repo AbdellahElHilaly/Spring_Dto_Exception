@@ -1,8 +1,6 @@
-package springbootBlog202321.demo.Contrller;
+package springbootBlog202321.demo.Controller;
 
 
-import lombok.Data;
-import lombok.Getter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,7 +39,6 @@ public class EmployeeController {
         return new ResponseEntity<EmployeeDto>(employeeService.getEmployeeById(employeeId), HttpStatus.OK);
     }
 
-    // build update employee REST API
     // http://localhost:8080/api/employees/1
     @PutMapping("{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable("id") long id

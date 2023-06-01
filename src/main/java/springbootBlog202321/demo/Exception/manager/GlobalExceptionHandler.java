@@ -1,4 +1,4 @@
-package springbootBlog202321.demo.Exception;
+package springbootBlog202321.demo.Exception.manager;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
-
-import java.util.NoSuchElementException;
+import springbootBlog202321.demo.Exception.handler.ResourceNotFoundException;
+import springbootBlog202321.demo.Exception.format.ApiError;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -20,17 +20,7 @@ public class GlobalExceptionHandler {
         return new ApiError(ex.getMessage());
     }
 
-    // Handle NoSuchElementException
-    @ExceptionHandler(NoSuchElementException.class)
-    @ResponseBody
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ApiError handleNoSuchElementException(NoSuchElementException ex) {
-        String errorMessage = ex.getMessage() != null ? ex.getMessage() : "Resource not found";
-        return new ApiError(errorMessage);
-    }
 
-
-    // Handle MethodArgumentTypeMismatchException
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -39,4 +29,5 @@ public class GlobalExceptionHandler {
                 ex.getValue().getClass().getSimpleName(), ex.getRequiredType().getSimpleName(), ex.getValue());
         return new ApiError(error);
     }
+
 }

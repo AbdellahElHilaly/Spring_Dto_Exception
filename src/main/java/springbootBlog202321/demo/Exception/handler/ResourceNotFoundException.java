@@ -1,4 +1,4 @@
-package springbootBlog202321.demo.Exception;
+package springbootBlog202321.demo.Exception.handler;
 
 
 import lombok.AllArgsConstructor;
